@@ -3,12 +3,13 @@ import {
   Main,
   Timeline,
   Expertise,
+  Experience,
   Project,
   Contact,
   Navigation,
   Footer,
 } from "./components";
-import Experience from "./components/Experience";
+
 import FadeIn from "./components/FadeIn";
 import "./index.scss";
 
@@ -25,17 +26,37 @@ function App() {
 
   return (
     <div className={`main-container ${mode === "dark" ? "dark-mode" : "light-mode"}`}>
-      <Navigation parentToChild={{ mode }} modeChange={handleModeChange} />
-      <FadeIn transitionDuration={700}>
-        <Main />
-        <Expertise />
-        <Experience />
-        <Timeline />
-        <Project />
-        <Contact />
-      </FadeIn>
-      <Footer />
-    </div>
+  <Navigation parentToChild={{ mode }} modeChange={handleModeChange} />
+
+  <FadeIn transitionDuration={700}>
+    <Main />
+  </FadeIn>
+
+  {/* Expertise fades independently */}
+  <FadeIn transitionDuration={700} delay={100}>
+    <Expertise />
+  </FadeIn>
+
+  {/* Experience fades independently */}
+  <FadeIn transitionDuration={700} delay={100}>
+    <Experience />
+  </FadeIn>
+
+  <FadeIn transitionDuration={700} delay={100}>
+    <Timeline />
+  </FadeIn>
+
+  <FadeIn transitionDuration={700} delay={100}>
+    <Project />
+  </FadeIn>
+
+  <FadeIn transitionDuration={700} delay={100}>
+    <Contact />
+  </FadeIn>
+
+  <Footer />
+</div>
+
   );
 }
 

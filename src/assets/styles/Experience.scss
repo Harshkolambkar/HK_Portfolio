@@ -1,95 +1,70 @@
 .experience-expand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 4rem 2rem;
-  background: #0d1117;
+  padding: 2rem;
+  background-color: #0f0f0f;
   color: #fff;
+  font-family: Arial, sans-serif;
 
   .title {
-    text-align: center;
-    margin-bottom: 2rem;
     font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
   }
 
   .exp-card {
-    background: #1e2228;
+    background: #1c1c1c;
     border-radius: 12px;
-    overflow: hidden;
-    width: 80%;
-    max-width: 800px;
-    margin: 1rem 0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
 
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+    &.open {
+      background: #222;
     }
 
     .exp-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.2rem;
-      background: #272c34;
-      width: 100%;
-      border: none;
-      cursor: pointer;
-      color: inherit;
-      text-align: left;
+    }
 
-      .exp-info {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+    .exp-info {
+      display: flex;
+      align-items: center;
 
-        .exp-logo {
-          width: 60px;
-          height: 60px;
-          object-fit: contain;
-          border-radius: 8px;
-        }
-
-        .exp-text {
-          display: flex;
-          flex-direction: column;
-
-          h3 {
-            margin: 0;
-            font-size: 1.2rem;
-          }
-
-          p {
-            margin: 0.1rem 0 0;
-            font-size: 1rem;
-            color: #bbb;
-          }
-        }
+      .exp-logo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 1rem;
       }
 
-      .toggle-icon {
-        font-size: 1.2rem;
-        transition: transform 0.3s ease;
-
-        &.rotate {
-          transform: rotate(180deg);
+      .exp-text {
+        h3 {
+          margin: 0;
+          font-size: 1.2rem;
+          color: #61dafb;
         }
+
+        p {
+          margin: 0;
+          color: #ccc;
+        }
+      }
+    }
+
+    .exp-arrow {
+      transition: transform 0.3s ease;
+
+      &.rotate {
+        transform: rotate(180deg);
       }
     }
 
     .exp-details {
-      padding: 1rem 1.2rem;
+      margin-top: 1rem;
       line-height: 1.6;
-      background-color: #1e2228;
-      color: #e6e6e6;
-    }
-
-    &.open {
-      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
-      
-      .toggle-icon {
-        transform: rotate(180deg);
-      }
+      color: #ddd;
     }
   }
 }
