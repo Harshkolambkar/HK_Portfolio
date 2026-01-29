@@ -1,5 +1,5 @@
 import React from "react";
-import mock01 from '../assets/images/mock01.png';
+//import mock01 from '../assets/images/mock01.png';
 
 import '../assets/styles/Project.scss';
 
