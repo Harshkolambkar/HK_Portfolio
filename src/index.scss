@@ -1,3 +1,34 @@
+@use './assets/styles/responsive' as *;
+
+// Global box model — prevents padding/border from causing overflow
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1116;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5000ca;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6a1fff;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #5000ca #0d1116;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -6,6 +37,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.1rem !important;
+  overflow-x: hidden; // prevent any stray horizontal scroll
 }
 
 code {
@@ -16,7 +48,6 @@ code {
 .main-container {
   position: relative;
   background-color: #0d1116;
-
 }
 
 a {
@@ -25,7 +56,7 @@ a {
 
 a:hover {
   color: #5000ca;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
 }
 
 p, a, h1, h2, h3, h4, h5, label, button {
@@ -90,6 +121,17 @@ p, a, h1, h2, h3, h4, h5, label, button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  max-width: $max-section-width;
+  margin: 0 auto;
+
+  @include md {
+    padding: 5% 7%;
+  }
+
+  @include sm {
+    padding: 5% 5%;
+  }
 }
 
 .light-mode {
@@ -105,7 +147,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
 
   a:hover {
     color: #5000ca;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
   }
 
   .navigation-bar svg {
@@ -143,13 +185,5 @@ p, a, h1, h2, h3, h4, h5, label, button {
 
   .flex-chips .chip-title {
     color: #0d1116;
-  }
-}
-
-@media screen {
-  @media (max-width: 768px) {
-    .items-container {
-      padding: 5% 5%;
-    }
   }
 }

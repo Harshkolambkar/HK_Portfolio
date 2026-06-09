@@ -1,7 +1,7 @@
 import React from "react";
 import '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact} from '@fortawesome/free-brands-svg-icons';
+import { faCode, faServer, faRobot } from '@fortawesome/free-solid-svg-icons';
 import Chip from '@mui/material/Chip';
 import '../assets/styles/Expertise.scss';
 import { v4 as uuidv4 } from 'uuid';
@@ -24,7 +24,7 @@ function Expertise() {
             <h1>Expertise</h1>
             <div className="skills-grid">
                 <div className="skill">
-                    <FontAwesomeIcon icon={faReact} size="3x"/>
+                    <FontAwesomeIcon icon={faCode} size="3x"/>
                     <h3>Frontend Development</h3>
                     <p>I specialize in crafting responsive and engaging user interfaces using modern frameworks. My focus is on delivering seamless, accessible web experiences with clean code and intuitive design. I bring extensive experience with React, Angular, and the full spectrum of web styling technologies.</p>
                     <div className="flex-chips">
@@ -36,7 +36,7 @@ function Expertise() {
                 </div>
 
                 <div className="skill">
-                    <FontAwesomeIcon icon={faReact} size="3x"/>
+                    <FontAwesomeIcon icon={faServer} size="3x"/>
                     <h3>Backend Development</h3>
                     <p>I build robust server-side applications and APIs with an emphasis on scalability, security, and maintainability. Experienced in Django and FastAPI, I integrate both SQL and NoSQL databases to support diverse business needs. My solutions power efficient data processing and seamless app integration.</p>
                     <div className="flex-chips">
@@ -48,7 +48,7 @@ function Expertise() {
                 </div>
 
                <div className="skill">
-                    <FontAwesomeIcon icon={faReact} size="3x"/>
+                    <FontAwesomeIcon icon={faRobot} size="3x"/>
                     <h3>Langchain & Generative AI Applications</h3>
                     <p>I develop AI-driven applications leveraging Langchain and LangGraph, focusing on conversational agents and retrieval-augmented systems. My work includes integrating LLMs and constructing scalable pipelines tailored to business logic. Passionate about advancing intelligent automation and real-world GenAI solutions.</p>
                     <div className="flex-chips">
@@ -61,9 +61,6 @@ function Expertise() {
             </div>
         </div>
     </div>
-
-
-
     );
 }
 

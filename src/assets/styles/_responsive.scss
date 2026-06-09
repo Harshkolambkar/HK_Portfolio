@@ -1,0 +1,35 @@
+// =============================================================================
+// Responsive Breakpoint System
+// Aligned with MUI's default breakpoints so CSS and component-level breakpoints
+// stay in sync. The hamburger nav triggers at $bp-md (900px).
+//
+// Usage in any .scss file:
+//   @use './responsive' as *;
+//
+// Mixins (max-width, mobile-first overrides):
+//   @include xs { ... }   // ≤ 480px  — small phones
+//   @include sm { ... }   // ≤ 600px  — mobile      (MUI sm)
+//   @include md { ... }   // ≤ 900px  — tablet      (MUI md) ← hamburger nav
+//   @include lg { ... }   // ≤ 1200px — desktop     (MUI lg)
+//   @include xl { ... }   // ≤ 1536px — large desktop (MUI xl)
+//
+// Variables (for custom @media):
+//   @media screen and (max-width: $bp-md) { ... }
+//
+// Max section width — prevents content from over-stretching on ultrawide:
+//   max-width: $max-section-width; margin: 0 auto;
+// =============================================================================
+
+$bp-xs: 480px;
+$bp-sm: 600px;
+$bp-md: 900px;
+$bp-lg: 1200px;
+$bp-xl: 1536px;
+
+$max-section-width: 1400px;
+
+@mixin xs { @media screen and (max-width: #{$bp-xs}) { @content; } }
+@mixin sm { @media screen and (max-width: #{$bp-sm}) { @content; } }
+@mixin md { @media screen and (max-width: #{$bp-md}) { @content; } }
+@mixin lg { @media screen and (max-width: #{$bp-lg}) { @content; } }
+@mixin xl { @media screen and (max-width: #{$bp-xl}) { @content; } }

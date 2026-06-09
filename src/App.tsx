@@ -8,6 +8,7 @@ import {
   Contact,
   Navigation,
   Footer,
+  ChatWidget,
 } from "./components";
 
 import FadeIn from "./components/FadeIn";
@@ -55,6 +56,7 @@ function App() {
   </FadeIn>
 
   <Footer />
+  <ChatWidget />
 </div>
 
   );

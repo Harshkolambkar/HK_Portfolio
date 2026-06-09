@@ -9,7 +9,8 @@ interface ExpItem {
   company: string;
   logo: string;
   position: string;
-  description: string;
+  duration: string;
+  bullets: string[];
 }
 
 const experienceData: ExpItem[] = [
@@ -17,17 +18,26 @@ const experienceData: ExpItem[] = [
     id: 1,
     company: "Deloitte",
     logo: logo1,
-    position: "Associate Analyst",
-    description: "Designed and implemented frontend features using React and TypeScript, collaborated with cross-functional teams, and improved app performance by 30%.Designed and implemented frontend features using React and TypeScript, collaborated with cross-functional teams, and improved app performance by 30%.Designed and implemented frontend features using React and TypeScript, collaborated with cross-functional teams, and improved app performance by 30%.Designed and implemented frontend features using React and TypeScript, collaborated with cross-functional teams, and improved app performance by 30%.Designed and implemented frontend features using React and TypeScript, collaborated with cross-functional teams, and improved app performance by 30%.Designed and implemented frontend features using React and TypeScript, collaborated with cross-functional teams, and improved app performance by 30%.Designed and implemented frontend features using React and TypeScript, collaborated with cross-functional teams, and improved app performance by 30%."
+    position: "Software Engineer 1",
+    duration: "2025 – Present",
+    bullets: [
+      "Promoted to full stack engineering, building end-to-end features across React/TypeScript frontends and Python/FastAPI backends.",
+      "Designing and developing AI agents using Langchain and LangGraph to automate complex, multi-step workflows.",
+      "Integrating tool-calling, memory, and multi-step reasoning into production-grade agentic systems for enterprise use.",
+    ]
   },
-  // {
-  //   id: 2,
-  //   company: "Tech Solutions",
-  //   logo: "/images/techsolutions-logo.png",
-  //   position: "Frontend Developer",
-  //   description: "Worked on responsive web applications, integrated APIs, and enhanced UI/UX with animations and smooth interactions."
-  // },
-  // Add more experiences here
+  {
+    id: 2,
+    company: "Deloitte",
+    logo: logo1,
+    position: "Associate Analyst",
+    duration: "2023 – 2025",
+    bullets: [
+      "Built and maintained responsive UI components using React and TypeScript for enterprise-scale web applications.",
+      "Collaborated with cross-functional teams across design, backend, and QA to deliver features on schedule.",
+      "Improved application performance and accessibility across key user-facing flows.",
+    ]
+  },
 ];
 
 const Experience: React.FC = () => {
@@ -37,57 +47,45 @@ const Experience: React.FC = () => {
     setOpenId(openId === id ? null : id);
   };
 
- return (
-  <section className="experience-expand"  id="experience">
-    <br />
-        <br />
-            <br />
-                <br />
-                
-    <h2 className="title">Experience</h2>
-    {experienceData.map((exp) => (
-      <div
-        key={exp.id}
-        className={`exp-card ${openId === exp.id ? 'open' : ''}`}
-      >
-        <div className="exp-header">
-          <div className="exp-info">
-            <img src={exp.logo} alt={exp.company} className="exp-logo" />
-            <div className="exp-text">
-              <h3>{exp.company}</h3>
-              <p>{exp.position}</p>
+  return (
+    <section className="experience-expand" id="experience">
+      <h2 className="title">Experience</h2>
+      {experienceData.map((exp) => (
+        <div
+          key={exp.id}
+          className={`exp-card ${openId === exp.id ? 'open' : ''}`}
+        >
+          <div className="exp-header">
+            <div className="exp-info">
+              <img src={exp.logo} alt={exp.company} className="exp-logo" />
+              <div className="exp-text">
+                <h3>{exp.company}</h3>
+                <p className="exp-position">{exp.position}</p>
+                <p className="exp-duration">{exp.duration}</p>
+              </div>
+            </div>
+
+            <div
+              className={`exp-arrow ${openId === exp.id ? 'rotate' : ''}`}
+              onClick={() => toggleOpen(exp.id)}
+            >
+              <FontAwesomeIcon icon={faAngleUp} style={{ color: "#ffffff" }} />
             </div>
           </div>
 
-          {/* ⬇️ Only arrow triggers toggle */}
-          <div
-            className={`exp-arrow ${openId === exp.id ? 'rotate' : ''}`}
-            onClick={() => toggleOpen(exp.id)}
-          >
-            <FontAwesomeIcon icon={faAngleUp} style={{ color: "#ffffff" }} />
-          </div>
+          {openId === exp.id && (
+            <div className="exp-details">
+              <ul>
+                {exp.bullets.map((point, i) => (
+                  <li key={i}>{point}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
-
-        {/* ⬇️ Description shows only when open */}
-        {openId === exp.id && (
-          <div className="exp-details">
-            {exp.description}
-          </div>
-        )}
-      </div>
-    ))}
-
-
-      <br />
-        <br />
-            <br />
-                <br />
-                <br />    <br />
-                    <br />
-    
-  </section>
-);
-
+      ))}
+    </section>
+  );
 };
 
 export default Experience;

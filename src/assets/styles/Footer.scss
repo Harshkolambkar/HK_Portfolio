@@ -1,15 +1,36 @@
+@use './responsive' as *;
+
 footer {
-    text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid #222;
 
-    svg {
-        width: 1.1em !important;
-        height: 1.1em !important;
-        margin-right: 10px;
-    }
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 12px;
 
-    p {
-        font-size: 0.8em;
+    a {
+      color: #aaa;
+      transition: color 0.2s ease;
+
+      &:hover { color: #5000ca; }
     }
+  }
+
+  svg {
+    width: 1.4em !important;
+    height: 1.4em !important;
+  }
+
+  p {
+    font-size: 0.8em;
+    color: #666;
+    margin: 0;
+  }
+
+  @include sm {
+    padding: 32px 16px;
+  }
 }

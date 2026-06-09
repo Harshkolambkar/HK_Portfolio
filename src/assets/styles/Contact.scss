@@ -1,7 +1,60 @@
+@use './responsive' as *;
+
 .contact_wrapper svg {
   font-size: 1em;
   vertical-align: middle;
   margin-right: 5px;
+}
+
+.contact-subtitle {
+  color: #aaa;
+  font-size: 1rem !important;
+  margin-bottom: 16px !important;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: center;
+
+  .contact-link-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    background-color: #5000ca;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+
+    &:hover { background-color: #3a0099; }
+  }
+
+  .contact-link-icon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #5000ca;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #7c3aed;
+      text-decoration: underline;
+    }
+  }
+}
+
+.contact-or {
+  color: #666;
+  font-size: 0.85rem !important;
+  text-align: center;
+  margin: 16px 0 0 !important;
 }
 
 .contact-form {
@@ -32,10 +85,12 @@ label {
   display: flex;
   gap: 15px;
   padding-bottom: 15px;
+  flex-wrap: wrap; // allow wrapping on small screens
 }
 
 .form-flex .MuiFormControl-root {
   width: 100%;
+  min-width: 200px; // prevent inputs from collapsing too small
 }
 
 form {
@@ -45,4 +100,22 @@ form {
 .body-form {
   width: 100% !important;
   margin-bottom: 15px !important;
+}
+
+// Mobile: stack inputs and full-width submit button
+@include sm {
+  .form-flex {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .form-flex .MuiFormControl-root {
+    min-width: unset;
+  }
+
+  .contact-form button {
+    float: none;
+    width: 100%;
+    margin-top: 8px;
+  }
 }
