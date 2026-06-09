@@ -64,15 +64,69 @@ p, a, h1, h2, h3, h4, h5, label, button {
   font-family: "Lato", sans-serif;
 }
 
-.navigation-bar {
-  justify-content: space-between;
-  background-color: #0d1116;
+// Glassmorphism navbar — transparent at top, solid+blur on scroll
+.navbar-fixed-top {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  transition: background-color 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease !important;
 
-  button {
-    font-size: 1.1rem;
+  &.scrolled {
+    background-color: rgba(13, 17, 22, 0.82) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    box-shadow: 0 1px 24px rgba(0, 0, 0, 0.45) !important;
+  }
+}
+
+.navigation-bar {
+  justify-content: flex-start;
+  background-color: transparent !important;
+
+  .nav-logo {
+    font-family: "Lato", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #a855f7, #5000ca);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    user-select: none;
+    transition: opacity 0.2s ease;
+
+    &:hover { opacity: 0.85; }
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
     font-family: "Lato", sans-serif;
     text-transform: initial;
-    padding: 6px 10px;
+    padding: 6px 12px;
+    color: rgba(255, 255, 255, 0.85) !important;
+    letter-spacing: 0.2px;
+    transition: color 0.2s ease !important;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 12px;
+      right: 12px;
+      height: 2px;
+      background: #a855f7;
+      border-radius: 2px;
+      transform: scaleX(0);
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      color: #fff !important;
+      background-color: transparent !important;
+
+      &::after { transform: scaleX(1); }
+    }
   }
 
   svg {
@@ -88,7 +142,6 @@ p, a, h1, h2, h3, h4, h5, label, button {
 }
 
 .container {
-  margin-top: 64px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -137,8 +190,18 @@ p, a, h1, h2, h3, h4, h5, label, button {
 .light-mode {
   background-color: #f8f9fa;
 
-  .navigation-bar {
-    background-color: #f8f9fa;
+  .navbar-fixed-top.scrolled {
+    background-color: rgba(248, 249, 250, 0.88) !important;
+  }
+
+  .navigation-bar .nav-logo {
+    // keep gradient in light mode
+  }
+
+  .navigation-bar .nav-link {
+    color: rgba(13, 17, 22, 0.8) !important;
+
+    &:hover { color: #0d1116 !important; }
   }
 
   p, a, h1, h2, h3, h4, h5, label, button {
