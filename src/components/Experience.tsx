@@ -69,7 +69,7 @@ const Experience: React.FC = () => {
               className={`exp-arrow ${openId === exp.id ? 'rotate' : ''}`}
               onClick={() => toggleOpen(exp.id)}
             >
-              <FontAwesomeIcon icon={faAngleUp} style={{ color: "#ffffff" }} />
+              <FontAwesomeIcon icon={faAngleUp} />
             </div>
           </div>
 
